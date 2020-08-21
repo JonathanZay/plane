@@ -1,5 +1,6 @@
 import Map from './js/Map';
 import Enemy from './js/Enemy';
+import Player from './js/Player';
 
 const raf = window.requestAnimationFrame || window.webkitRequestAnimationFrame;
 
@@ -17,20 +18,19 @@ let enemys: Array<Enemy> = [];
 function CreateEnemy(enemyNum: number) {
     for (let i = 0; i < enemyNum; i++) {
         enemys.push(new Enemy());
-    }
+    } 
 }
 
-function Aniamte() {
+let player = new Player();
+
+function Animate() {
     Map.render();
-    for (let i = 0; i < enemys.length; i++) {
-        enemys[i].render();
-        enemys[i].move();
-    }
-    raf(Aniamte);
+    player.render(enemys);
+    raf(Animate);
 }
 
 function StartGame() {
     CreateEnemy(50);
-    Aniamte();
+    Animate();
 }
 StartGame();

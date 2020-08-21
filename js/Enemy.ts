@@ -11,13 +11,19 @@ class Enemy {
     public x: number;
     public y: number;
     public radius: number;
-    public color: string;
-    public speed: number;
+    private color: string;
+    private speed: number;
 
     constructor(options?: IOptions) {
-        this.x = options.x || Math.random() * Map.width;
-        this.y = options.y || Math.random() * Map.height;
-        this.radius = Math.random() * 2 + 3;
+        if(options){
+            this.x = options.x ;
+            this.y = options.y;
+        }
+        else{
+            this.x =  Math.random() * Map.width;
+            this.y = Math.random() * Map.height;
+        }  
+        this.radius = Math.random() * 4 + 4;
         this.color = '#f00';
         this.speed = Math.random() * 2 + 0.5;
     }
@@ -34,7 +40,7 @@ class Enemy {
      * 生成敌人
      */
     public render(): void {
-        Map.ctx.beginPath;
+        Map.ctx.beginPath();
         Map.ctx.fillStyle = this.color;
         Map.ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
         Map.ctx.fill();

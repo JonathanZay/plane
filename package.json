@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "yarn parcel index.html"
   },
-  "dependencies": {
-    "parcel-bundler": "^1.12.4"
+  "dependencies": {},
+  "devDependencies": {
+    "parcel-bundler": "^1.12.4",
+    "typescript": "^4.0.2"
   }
 }
